@@ -1,1 +1,37 @@
-<p>customer-register works!</p>
+<form class="register-customer-form" [formGroup]="registerCustomerForm" (ngSubmit)="registerCustomer()">
+  <mat-form-field>
+    <mat-label>Enter first name</mat-label>
+    <input matInput placeholder="Ex. John" formControlName="firstName">
+    @if (registerCustomerForm.get('firstName')?.invalid) {
+      <mat-error>First name is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Enter last name</mat-label>
+    <input matInput placeholder="Ex. Doe" formControlName="lastName"/>
+    @if (registerCustomerForm.get('lastName')?.invalid) {
+      <mat-error>Last name is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Enter email</mat-label>
+    <input matInput placeholder="Ex. john@doe.com" formControlName="email"/>
+    @if (registerCustomerForm.get('email')?.invalid) {
+      <mat-error>Your email is invalid</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Enter password</mat-label>
+    <input type="password" matInput placeholder="********" formControlName="password"/>
+    @if (registerCustomerForm.get('password')?.invalid) {
+      <mat-error>Password is required</mat-error>
+    }
+  </mat-form-field>
+
+  <button [disabled]="registerCustomerForm.invalid" mat-raised-button color="primary" type="submit">Register customer</button>
+  Already a member?
+  <a routerLink="/customer/login">login now!</a>
+</form>
