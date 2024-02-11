@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <a routerLink="/">PureGlam</a>
+  <span class="spacer"></span>
+
+  <button mat-icon-button class="mobile-menu" [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="desktop-menu-container">
+    <a mat-menu-item class="desktop-menu" routerLink="/register">Register</a>
+    <a mat-menu-item class="desktop-menu" routerLink="/customer/login">Login</a>
+  </div>
+
+
+  <mat-menu #menu="matMenu">
+    <a mat-menu-item routerLink="/register">Register</a>
+    <a mat-menu-item routerLink="/customer/login">Login</a>
+  </mat-menu>
+</mat-toolbar>
