@@ -8,5 +8,6 @@ export const routes: Routes = [
   {path: "register", component: CustomerRegisterComponent},
   {path: "admin/login", component: AdminLoginComponent},
   {path: "staff/login", component: StaffLoginComponent},
-  {path: "customer/login", component: CustomerLoginComponent}
+  {path: "customer/login", component: CustomerLoginComponent},
+  {path: "customer", loadChildren: () => import("./modules/customer/customer.module").then(m => m.CustomerModule)}
 ];

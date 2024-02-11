@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatLabel} from "@angular/material/form-field";
@@ -30,7 +30,8 @@ export class CustomerRegisterComponent {
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private snackBar: MatSnackBar,
-              private router: Router) {}
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.registerCustomerForm = this.fb.group({
@@ -38,7 +39,7 @@ export class CustomerRegisterComponent {
       lastName: [null, Validators.required],
       email: [null, [Validators.email, Validators.required]],
       password: [null, Validators.required]
-    })
+    });
   }
 
   registerCustomer() {
@@ -50,20 +51,16 @@ export class CustomerRegisterComponent {
       formData.append("email", this.registerCustomerForm.get("email")!.value);
       formData.append("password", this.registerCustomerForm.get("password")!.value);
 
-      try {
-        console.log(this.registerCustomerForm.value)
-        this.authService.registerCustomer(formData).subscribe(res => {
-          const snackBarDismissed = this.snackBar.open("Customer registered successfully!", 'Close',
-            {duration: 1500, panelClass: ['success-snackbar']}).afterDismissed();
-          snackBarDismissed.subscribe(() => {
-            this.router.navigateByUrl("/customer/login");
-          })
-        });
-      } catch (e) {
-        console.log(e);
+      this.authService.registerCustomer(formData).subscribe(res => {
+        const snackBarDismissed = this.snackBar.open("Customer registered successfully!", 'Close',
+          {duration: 1500, panelClass: ['success-snackbar']}).afterDismissed();
+        snackBarDismissed.subscribe(() => {
+          this.router.navigateByUrl("/customer/login");
+        })
+      }, err => {
         this.snackBar.open("Error happened!", 'Close',
-          {duration: 3000,  panelClass: ['error-snackbar']});
-      }
+          {duration: 3000, panelClass: ['error-snackbar']});
+      });
     }
   }
 

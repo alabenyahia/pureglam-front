@@ -13,4 +13,8 @@ export class AuthService {
   registerCustomer(registerData: any){
     return this.http.post(BASE_URL + "/api/auth/customer/register", registerData);
   }
+
+  loginCustomer(loginData: any) {
+    return this.http.post(BASE_URL + "/api/auth/customer/login", loginData);
+  }
 }
