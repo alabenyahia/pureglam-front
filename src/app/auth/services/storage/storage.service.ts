@@ -20,4 +20,21 @@ export class StorageService {
     window.localStorage.setItem(CUSTOMER_USER, JSON.stringify(user));
   }
 
+  static getCustomerToken() {
+    return window.localStorage.getItem(CUSTOMER_TOKEN);
+  }
+
+  static getCustomerUser() {
+    return JSON.parse(window.localStorage.getItem(CUSTOMER_USER)!);
+  }
+
+  static isCustomerLoggedIn(): boolean {
+    return (this.getCustomerToken() != null);
+  }
+
+  static logoutCustomer(): void {
+    window.localStorage.removeItem(CUSTOMER_TOKEN);
+    window.localStorage.removeItem(CUSTOMER_USER);
+  }
+
 }

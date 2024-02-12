@@ -4,7 +4,7 @@ import {MatInput} from "@angular/material/input";
 import {MatLabel} from "@angular/material/form-field";
 import {MatError} from "@angular/material/form-field";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatFabButton} from "@angular/material/button";
 import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../../services/auth/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -19,13 +19,15 @@ import {MatSnackBar} from "@angular/material/snack-bar";
     MatError,
     ReactiveFormsModule,
     MatButton,
-    RouterLink
+    RouterLink,
+    MatFabButton
   ],
   templateUrl: './customer-register.component.html',
   styleUrl: './customer-register.component.css'
 })
 export class CustomerRegisterComponent {
   registerCustomerForm!: FormGroup;
+  hidePassword = true;
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,

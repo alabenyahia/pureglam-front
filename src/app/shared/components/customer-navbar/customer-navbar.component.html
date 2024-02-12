@@ -1,1 +1,18 @@
-<p>customer-navbar works!</p>
+<mat-toolbar color="primary">
+  <a routerLink="/">PureGlam</a>
+  <span class="spacer"></span>
+
+  <button mat-icon-button class="mobile-menu" [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="desktop-menu-container">
+    <a mat-menu-item class="desktop-menu" routerLink="/customer/dashboard">Home</a>
+    <a mat-menu-item class="desktop-menu" (click)="logoutCustomer()">Logout</a>
+  </div>
+
+  <mat-menu #menu="matMenu">
+    <a mat-menu-item routerLink="/customer/dashboard">Home</a>
+    <a mat-menu-item (click)="logoutCustomer()">Logout</a>
+  </mat-menu>
+</mat-toolbar>

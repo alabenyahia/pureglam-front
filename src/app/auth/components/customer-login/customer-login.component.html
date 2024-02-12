@@ -1,4 +1,5 @@
-<form class="register-customer-form" [formGroup]="loginCustomerForm" (ngSubmit)="loginCustomer()">
+<form class="login-customer-form" [formGroup]="loginCustomerForm" (ngSubmit)="loginCustomer()">
+  <h2>Customer Login</h2>
 
   <mat-form-field>
     <mat-label>Enter email</mat-label>
@@ -15,8 +16,11 @@
       <mat-error>Password is required</mat-error>
     }
   </mat-form-field>
+  <button [disabled]="loginCustomerForm.invalid" mat-fab extended color="primary" type="submit">Login customer</button>
 
-  <button [disabled]="loginCustomerForm.invalid" mat-raised-button color="primary" type="submit">Login customer</button>
-  Not a member?
-  <a routerLink="/customer/register">register now!</a>
+  <div class="secondary-cta">
+    <p>Not a member?</p>
+    <a routerLink="/register">register now!</a>
+  </div>
+
 </form>

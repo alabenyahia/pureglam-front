@@ -1,4 +1,6 @@
 <form class="register-customer-form" [formGroup]="registerCustomerForm" (ngSubmit)="registerCustomer()">
+  <h2>Customer Registration</h2>
+
   <mat-form-field>
     <mat-label>Enter first name</mat-label>
     <input matInput placeholder="Ex. John" formControlName="firstName">
@@ -31,7 +33,11 @@
     }
   </mat-form-field>
 
-  <button [disabled]="registerCustomerForm.invalid" mat-raised-button color="primary" type="submit">Register customer</button>
-  Already a member?
-  <a routerLink="/customer/login">login now!</a>
+  <button [disabled]="registerCustomerForm.invalid" mat-fab extended color="primary" type="submit">Register customer</button>
+
+  <div class="secondary-cta">
+    <p>Already a member?</p>
+    <a routerLink="/customer/login">login now!</a>
+  </div>
+
 </form>

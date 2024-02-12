@@ -1,0 +1,27 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Mobile styles */
+.desktop-menu-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  /* Show burger menu and hide other menu items */
+  .mobile-menu {
+    display: block;
+  }
+  .desktop-menu {
+    display: none;
+  }
+}
+
+@media (min-width: 601px) {
+  /* Hide burger menu and show other menu items */
+  .mobile-menu {
+    display: none;
+  }
+}

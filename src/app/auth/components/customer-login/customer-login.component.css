@@ -1,0 +1,19 @@
+.login-customer-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: .8rem;
+}
+
+.login-customer-form h2 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.secondary-cta {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
