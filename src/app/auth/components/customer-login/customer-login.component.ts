@@ -58,7 +58,7 @@ export class CustomerLoginComponent {
             isLoggedIn: true
           }
 
-          this.userAuthStatusService.updateCustomerUserLoginStatus(true);
+          this.userAuthStatusService.updateCustomerUserLoginStatus(user);
           StorageService.saveCustomerToken(res.jwt);
 
           this.router.navigateByUrl("/customer/dashboard");

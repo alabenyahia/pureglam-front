@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {StorageService} from "../storage/storage.service";
 
@@ -12,23 +12,17 @@ export class UserAuthStatusService {
 
   updateCustomerUserDataFromLocalStorage() {
     const storedUser = StorageService.getCustomerUser();
-    if (storedUser) {
-      try {
-        const parsedUser = JSON.parse(storedUser);
-        if (typeof parsedUser.isLoggedIn === 'boolean') { // Ensure valid boolean
-          this.customerUserSubject.next(parsedUser);
-        }
-      } catch (error) {
-        console.error('Error parsing user data from localStorage:', error);
-      }
+    if (storedUser && typeof storedUser.isLoggedIn === 'boolean') {
+      this.customerUserSubject.next(storedUser);
     }
   }
 
-  updateCustomerUserLoginStatus(isLoggedIn: boolean) {
-    const user = { ...this.customerUserSubject.getValue(), isLoggedIn: isLoggedIn };
+  updateCustomerUserLoginStatus(newData: any) {
+    const user = {...this.customerUserSubject.getValue(), ...newData};
     this.customerUserSubject.next(user);
     StorageService.saveCustomerUser(user);
   }
+
   constructor() {
     this.updateCustomerUserDataFromLocalStorage();
   }

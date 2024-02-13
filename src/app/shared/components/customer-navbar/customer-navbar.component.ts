@@ -28,7 +28,7 @@ export class CustomerNavbarComponent {
               private userAuthStatusService: UserAuthStatusService) {}
 
   logoutCustomer() {
-    this.userAuthStatusService.updateCustomerUserLoginStatus(false);
+    this.userAuthStatusService.updateCustomerUserLoginStatus({isLoggedIn: false, userId: null, role: null});
     StorageService.logoutCustomer();
     this.router.navigateByUrl("/customer/login");
   }
