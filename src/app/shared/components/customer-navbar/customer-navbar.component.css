@@ -2,6 +2,12 @@
   flex: 1 1 auto;
 }
 
+.desktop-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Mobile styles */
 .desktop-menu-container {
   display: flex;

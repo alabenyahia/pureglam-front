@@ -8,11 +8,13 @@
 
   <div class="desktop-menu-container">
     <a mat-menu-item class="desktop-menu" routerLink="/customer/dashboard">Home</a>
+    <a mat-menu-item class="desktop-menu" routerLink="/customer/stores">My stores</a>
     <a mat-menu-item class="desktop-menu" (click)="logoutCustomer()">Logout</a>
   </div>
 
   <mat-menu #menu="matMenu">
     <a mat-menu-item routerLink="/customer/dashboard">Home</a>
+    <a mat-menu-item routerLink="/customer/stores">My stores</a>
     <a mat-menu-item (click)="logoutCustomer()">Logout</a>
   </mat-menu>
 </mat-toolbar>
