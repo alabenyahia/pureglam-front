@@ -1,0 +1,17 @@
+.store-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 32px auto;
+}
+
+.store-card {
+  max-width: 420px;
+}
+
+div.swiper-button-next {
+  color: white !important;
+}
+
+/* TODO: Change swiper navugation buttons color to match website theme */

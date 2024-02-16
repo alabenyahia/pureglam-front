@@ -1,1 +1,29 @@
-<p>customer-stores works!</p>
+@if (customerStores.length > 0) {
+  <div class="store-cards-container">
+    @for (store of customerStores; track store.id) {
+      <mat-card class="store-card">
+
+        @if (store.photos !== null && store.photos.length > 0) {
+          <div class="photo-carousel">
+
+            <swiper-container class="mySwiper" loop="true" navigation="true" speed="700" effect="fade">
+              @for (photo of store.photos; track photo.id) {
+                <swiper-slide>
+                  <img [src]="photo.processedPhoto" alt="Store photo" width="100%" height="320" style="object-fit: cover;">
+                </swiper-slide>
+              }
+            </swiper-container>
+
+          </div>
+        }
+
+        <mat-card-header style="margin-bottom: 1rem">
+          <mat-card-title>{{store.name}}</mat-card-title>
+          <mat-card-subtitle>Store description</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    }
+  </div>
+} @else {
+  <h1>No stores found...</h1>
+}

@@ -1,15 +1,32 @@
-import { Component } from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CustomerService} from "../../services/customer.service";
+import {
+  MatCard,
+  MatCardContent,
+  MatCardHeader,
+  MatCardImage,
+  MatCardTitle,
+  MatCardSubtitle
+} from "@angular/material/card";
 
 @Component({
   selector: 'app-customer-stores',
   standalone: true,
-  imports: [],
+  imports: [
+    MatCard,
+    MatCardTitle,
+    MatCardSubtitle,
+    MatCardHeader,
+    MatCardContent,
+    MatCardImage
+  ],
   templateUrl: './customer-stores.component.html',
-  styleUrl: './customer-stores.component.css'
+  styleUrl: './customer-stores.component.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CustomerStoresComponent {
   constructor(private customerService: CustomerService) {}
+
   customerStores: any = [];
 
   ngOnInit() {
@@ -18,10 +35,19 @@ export class CustomerStoresComponent {
   }
 
   getStoresByCustomerId() {
-    this.customerService.getStoresByCustomerId().subscribe((res: any )=> {
+    this.customerService.getStoresByCustomerId().subscribe((res: any) => {
       this.customerStores = [];
 
-      console.log("all stores ", res);
+      res.forEach((element: any) => {
+        if (element.photos) {
+          element.photos.forEach((photo: any) => {
+            photo.processedPhoto = 'data:image/jpeg;base64,' + photo.returnedPhoto;
+          });
+        }
+        this.customerStores.push(element);
+      })
+
+      console.log("all stores ", this.customerStores);
     }, error => {
 
     })

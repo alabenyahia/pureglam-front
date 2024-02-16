@@ -12,3 +12,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: #B71C1C !important;
   color: white !important;
 }
+
+.swiper-button-prev, .swiper-button-next {
+  color: black !important;
+}
+
+

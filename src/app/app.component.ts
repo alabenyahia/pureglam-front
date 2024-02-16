@@ -13,7 +13,8 @@ import {AsyncPipe} from "@angular/common";
   standalone: true,
   imports: [RouterOutlet, MatSlideToggle, MatButton, RouterLink, RouterLinkActive, NotAuthNavbarComponent, CustomerNavbarComponent, AsyncPipe],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+
 })
 export class AppComponent {
   title = 'pureglam-front';
