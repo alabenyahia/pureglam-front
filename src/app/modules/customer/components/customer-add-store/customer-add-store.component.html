@@ -1,0 +1,26 @@
+<div class="add-store-container">
+  <form class="add-store-form" [formGroup]="addStoreForm" (ngSubmit)="addStore()">
+    <h2>Add store</h2>
+
+    <mat-form-field>
+      <mat-label>Enter store name</mat-label>
+      <input matInput placeholder="Ex. PureGlam store" formControlName="name">
+      @if (addStoreForm.get('name')?.invalid) {
+        <mat-error>Store name is required</mat-error>
+      }
+    </mat-form-field>
+
+    <div style="display:flex; margin-bottom: 24px; align-items: center">
+      <ngx-colors format="rgba" ngx-colors-trigger style="display: inline-block; margin:5px;"
+                  formControlName="brandColor"></ngx-colors>
+      <span style="margin-left:10px;line-height: 33px;">
+        Select store's brand color
+    </span>
+    </div>
+
+
+    <button [disabled]="addStoreForm.invalid" mat-fab extended color="accent" type="submit">Add store</button>
+
+  </form>
+
+</div>

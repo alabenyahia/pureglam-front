@@ -9,6 +9,7 @@ import {
   MatCardSubtitle
 } from "@angular/material/card";
 import {MatButton} from "@angular/material/button";
+import {RouterLink, RouterLinkActive} from "@angular/router";
 
 @Component({
   selector: 'app-customer-stores',
@@ -20,7 +21,9 @@ import {MatButton} from "@angular/material/button";
     MatCardHeader,
     MatCardContent,
     MatCardImage,
-    MatButton
+    MatButton,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './customer-stores.component.html',
   styleUrl: './customer-stores.component.css',

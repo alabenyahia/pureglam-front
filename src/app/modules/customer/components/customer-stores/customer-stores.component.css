@@ -19,9 +19,6 @@
   width: 220px;
 }
 
-div.swiper-button-next {
-  color: white !important;
-}
 
 .add-store-container {
   display: flex;
@@ -34,4 +31,4 @@ div.swiper-button-next {
   margin: 32px auto;
 }
 
-/* TODO: Change swiper navugation buttons color to match website theme */
+/* TODO: Change swiper navigation buttons color to match website theme */
