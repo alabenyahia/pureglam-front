@@ -8,6 +8,7 @@ import {
   MatCardTitle,
   MatCardSubtitle
 } from "@angular/material/card";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-customer-stores',
@@ -18,7 +19,8 @@ import {
     MatCardSubtitle,
     MatCardHeader,
     MatCardContent,
-    MatCardImage
+    MatCardImage,
+    MatButton
   ],
   templateUrl: './customer-stores.component.html',
   styleUrl: './customer-stores.component.css',

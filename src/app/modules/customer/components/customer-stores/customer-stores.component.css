@@ -1,19 +1,37 @@
+.stores-page-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  margin: 32px auto;
+  gap: 24px;
+}
+
 .store-cards-container {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  margin: 32px 0;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
 .store-card {
-  width: 240px;
+  width: 220px;
 }
 
 div.swiper-button-next {
   color: white !important;
+}
+
+.add-store-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.no-stores-found {
+  max-width: 900px;
+  margin: 32px auto;
 }
 
 /* TODO: Change swiper navugation buttons color to match website theme */
