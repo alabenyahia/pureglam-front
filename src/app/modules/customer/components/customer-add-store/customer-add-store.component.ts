@@ -7,6 +7,8 @@ import {Router, RouterLink} from "@angular/router";
 import { NgxColorsModule } from 'ngx-colors';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {CustomerService} from "../../services/customer.service";
+import ColorJS from 'color';
+
 
 @Component({
   selector: 'app-customer-add-store',
@@ -48,13 +50,13 @@ export class CustomerAddStoreComponent {
 
     this.customerService.addCustomerStore(formData).subscribe((res: any) => {
       this.snackBar.open("Store added successfully!", 'Close',
-        {duration: 1500, panelClass: ['success-snackbar']});
-      this.addStoreForm.reset();
-      console.log(res)
+        {duration: 2500, panelClass: ['.success-snackbar']})
+      this.addStoreForm.reset()
     }, (err: any) => {
       this.snackBar.open("Error happened while adding store", 'Close',
-        {duration: 3000, panelClass: ['error-snackbar']});
+        {duration: 2500, panelClass: ['.error-snackbar']});
     })
+
   }
 
 }
