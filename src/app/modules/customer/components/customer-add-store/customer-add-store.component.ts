@@ -7,6 +7,7 @@ import {Router, RouterLink} from "@angular/router";
 import { NgxColorsModule } from 'ngx-colors';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {CustomerService} from "../../services/customer.service";
+import {MatIcon} from "@angular/material/icon";
 import ColorJS from 'color';
 
 
@@ -19,6 +20,7 @@ import ColorJS from 'color';
         MatFormField,
         MatInput,
         MatLabel,
+        MatIcon,
         ReactiveFormsModule,
         RouterLink,
         NgxColorsModule
@@ -29,6 +31,7 @@ import ColorJS from 'color';
 export class CustomerAddStoreComponent {
   addStoreForm!: FormGroup;
   brandColor: any;
+  photoGallery: any = [{id: 1}];
 
   constructor(private fb: FormBuilder,
               private customerService: CustomerService,
@@ -40,6 +43,20 @@ export class CustomerAddStoreComponent {
       name: [null, Validators.required],
       brandColor: [null, Validators.required],
     });
+  }
+
+  addAnotherPhoto() {
+    this.photoGallery.push({id: this.photoGallery.length + 1});
+  }
+
+  onSelectPhoto(event: any, id: number) {
+    const file = event.target.files[0];
+    // Read or process the file to obtain the image URL
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.photoGallery[id - 1] = {...this.photoGallery[id -1], url: reader.result };
+    };
+    reader.readAsDataURL(file);
   }
 
   addStore() {

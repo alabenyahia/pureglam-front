@@ -18,6 +18,24 @@
     </span>
     </div>
 
+    @for (photoSelect of photoGallery; track photoSelect.id) {
+      <div class="photo-select-container">
+        <div class="photo-select">
+          <mat-label>Select Photo</mat-label>
+          <input type="file" (change)="onSelectPhoto($event, photoSelect.id)">
+        </div>
+
+        <div class="photo-select-add-btn">
+          <button (click)="addAnotherPhoto()" type="button" mat-fab color="accent" aria-label="Add another photo">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+
+      </div>
+    }
+
+
+
 
     <button [disabled]="addStoreForm.invalid" mat-fab extended color="accent" type="submit">Add store</button>
 
