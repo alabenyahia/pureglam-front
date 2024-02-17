@@ -2,12 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  max-width: 1100px;
-  margin: 32px auto;
+  margin: 32px 0;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .store-card {
-  max-width: 420px;
+  width: 240px;
 }
 
 div.swiper-button-next {
