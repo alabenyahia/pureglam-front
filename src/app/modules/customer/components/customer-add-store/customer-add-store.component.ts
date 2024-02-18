@@ -9,22 +9,24 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {CustomerService} from "../../services/customer.service";
 import {MatIcon} from "@angular/material/icon";
 import ColorJS from 'color';
+import {NgOptimizedImage} from "@angular/common";
 
 
 @Component({
   selector: 'app-customer-add-store',
   standalone: true,
-    imports: [
-        MatError,
-        MatFabButton,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MatIcon,
-        ReactiveFormsModule,
-        RouterLink,
-        NgxColorsModule
-    ],
+  imports: [
+    MatError,
+    MatFabButton,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatIcon,
+    ReactiveFormsModule,
+    RouterLink,
+    NgxColorsModule,
+    NgOptimizedImage
+  ],
   templateUrl: './customer-add-store.component.html',
   styleUrl: './customer-add-store.component.css'
 })
@@ -32,6 +34,9 @@ export class CustomerAddStoreComponent {
   addStoreForm!: FormGroup;
   brandColor: any;
   photoGallery: any = [{id: 1}];
+
+  selectedFile: any;
+  imagePreview: any;
 
   constructor(private fb: FormBuilder,
               private customerService: CustomerService,
@@ -51,18 +56,18 @@ export class CustomerAddStoreComponent {
     } else {
       this.photoGallery.pop();
     }
-
   }
 
   onSelectPhoto(event: any, id: number) {
     const file = event.target.files[0];
-    // Read or process the file to obtain the image URL
     const reader = new FileReader();
     reader.onload = () => {
-      this.photoGallery[id - 1] = {...this.photoGallery[id -1], url: reader.result };
+      this.photoGallery[id - 1] = {...this.photoGallery[id -1], preview: reader.result, selectedFile: file };
     };
     reader.readAsDataURL(file);
+    console.log("galry", this.photoGallery);
   }
+
 
   addStore() {
     const formData = new FormData();
