@@ -75,10 +75,17 @@ export class CustomerAddStoreComponent {
     formData.append("name", this.addStoreForm.get("name")!.value);
     formData.append("brandColor", this.addStoreForm.get("brandColor")!.value);
 
+    if (Object.hasOwn(this.photoGallery[0], "selectedFile") && this.photoGallery[0].selectedFile) {
+      this.photoGallery.forEach((photo: any) => {
+        formData.append("photos[" + (photo.id - 1).toString() + "].photo",  photo.selectedFile);
+      })
+    }
+
     this.customerService.addCustomerStore(formData).subscribe((res: any) => {
       this.snackBar.open("Store added successfully!", 'Close',
         {duration: 2500, panelClass: ['.success-snackbar']})
       this.addStoreForm.reset()
+      this.photoGallery = [{id: 1}];
     }, (err: any) => {
       this.snackBar.open("Error happened while adding store", 'Close',
         {duration: 2500, panelClass: ['.error-snackbar']});
