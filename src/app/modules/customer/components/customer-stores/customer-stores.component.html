@@ -9,6 +9,14 @@
 
       @for (store of customerStores; track store.id) {
         <mat-card class="store-card">
+          <div class="store-btns">
+            <button mat-mini-fab aria-label="Edit store button">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab (click)="deleteStore(store.id)" aria-label="Delete store button">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
 
           @if (store.photos !== null && store.photos.length > 0) {
             <div class="photo-carousel">

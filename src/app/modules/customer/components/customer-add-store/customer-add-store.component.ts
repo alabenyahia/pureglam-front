@@ -40,8 +40,7 @@ export class CustomerAddStoreComponent {
 
   constructor(private fb: FormBuilder,
               private customerService: CustomerService,
-              private snackBar: MatSnackBar,
-              private router: Router) {}
+              private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.addStoreForm = this.fb.group({
@@ -83,9 +82,11 @@ export class CustomerAddStoreComponent {
 
     this.customerService.addCustomerStore(formData).subscribe((res: any) => {
       this.snackBar.open("Store added successfully!", 'Close',
-        {duration: 2500, panelClass: ['.success-snackbar']})
-      this.addStoreForm.reset()
+        {duration: 2500, panelClass: ['.success-snackbar']});
+      this.addStoreForm.reset();
       this.photoGallery = [{id: 1}];
+
+      //TODO: remove selected image from input select after adding a store!
     }, (err: any) => {
       this.snackBar.open("Error happened while adding store", 'Close',
         {duration: 2500, panelClass: ['.error-snackbar']});

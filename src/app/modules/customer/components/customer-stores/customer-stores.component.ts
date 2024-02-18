@@ -8,8 +8,12 @@ import {
   MatCardTitle,
   MatCardSubtitle
 } from "@angular/material/card";
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatMiniFabButton} from "@angular/material/button";
 import {RouterLink, RouterLinkActive} from "@angular/router";
+import {MatIcon} from "@angular/material/icon";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogsService} from "../../../../shared/dialogs/services/dialogs.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-customer-stores',
@@ -23,14 +27,18 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
     MatCardImage,
     MatButton,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    MatIcon,
+    MatMiniFabButton
   ],
   templateUrl: './customer-stores.component.html',
   styleUrl: './customer-stores.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CustomerStoresComponent {
-  constructor(private customerService: CustomerService) {}
+  constructor(private customerService: CustomerService,
+              private dialogsService: DialogsService,
+              private snackBar: MatSnackBar) {}
 
   customerStores: any = [];
 
@@ -56,6 +64,24 @@ export class CustomerStoresComponent {
     }, error => {
 
     })
+  }
+
+  deleteStore(storeId: number) {
+    this.dialogsService.openDeleteConfirmationDialog('Are you sure you want to delete this store?')
+      .subscribe(confirmed => {
+        if (confirmed) {
+          this.customerService.deleteCustomerStore(storeId).subscribe((res: any) => {
+            this.snackBar.open("Store deleted successfully!", 'Close',
+              {duration: 2500, panelClass: ['.success-snackbar']});
+
+            this.getStoresByCustomerId();
+          }, (err: any) => {
+            this.snackBar.open("Error happened while deleting store", 'Close',
+              {duration: 2500, panelClass: ['.error-snackbar']});
+          });
+        }
+      });
+
   }
 
 }
