@@ -45,8 +45,13 @@ export class CustomerAddStoreComponent {
     });
   }
 
-  addAnotherPhoto() {
-    this.photoGallery.push({id: this.photoGallery.length + 1});
+  addOrDeleteAnotherPhoto(id: number) {
+    if (id === 1) {
+      this.photoGallery.push({id: this.photoGallery.length + 1});
+    } else {
+      this.photoGallery.pop();
+    }
+
   }
 
   onSelectPhoto(event: any, id: number) {

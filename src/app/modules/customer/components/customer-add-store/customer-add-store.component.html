@@ -26,8 +26,8 @@
         </div>
 
         <div class="photo-select-add-btn">
-          <button (click)="addAnotherPhoto()" type="button" mat-fab color="accent" aria-label="Add another photo">
-            <mat-icon>add</mat-icon>
+          <button (click)="addOrDeleteAnotherPhoto(photoSelect.id)" type="button" mat-fab color="accent" aria-label="Add another photo">
+            <mat-icon>{{photoSelect.id === 1 ? 'add' : 'remove'}}</mat-icon>
           </button>
         </div>
 
