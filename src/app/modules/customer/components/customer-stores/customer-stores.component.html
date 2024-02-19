@@ -8,7 +8,7 @@
     <div class="store-cards-container">
 
       @for (store of customerStores; track store.id) {
-        <mat-card class="store-card">
+        <mat-card class="store-card" >
           <div class="store-btns">
             <button routerLink="/customer/store/update/{{store.id}}" mat-mini-fab aria-label="Update store button">
               <mat-icon>edit</mat-icon>
@@ -36,7 +36,7 @@
                  style="object-fit: cover;">
           }
 
-          <mat-card-header style="margin-bottom: 1rem">
+          <mat-card-header style="margin-bottom: 1rem; cursor: pointer" (click)="showStoreDetails(store.id)">
             <mat-card-title>{{ store.name }}</mat-card-title>
             <mat-card-subtitle>Store description</mat-card-subtitle>
           </mat-card-header>

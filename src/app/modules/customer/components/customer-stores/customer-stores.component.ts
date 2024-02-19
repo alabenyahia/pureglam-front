@@ -9,7 +9,7 @@ import {
   MatCardSubtitle
 } from "@angular/material/card";
 import {MatButton, MatMiniFabButton} from "@angular/material/button";
-import {RouterLink, RouterLinkActive} from "@angular/router";
+import {Router, RouterLink, RouterLinkActive} from "@angular/router";
 import {MatIcon} from "@angular/material/icon";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogsService} from "../../../../shared/dialogs/services/dialogs.service";
@@ -38,6 +38,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class CustomerStoresComponent {
   constructor(private customerService: CustomerService,
               private dialogsService: DialogsService,
+              private router: Router,
               private snackBar: MatSnackBar) {}
 
   customerStores: any = [];
@@ -81,6 +82,11 @@ export class CustomerStoresComponent {
           });
         }
       });
+
+  }
+
+  showStoreDetails(storeId: number) {
+    this.router.navigateByUrl("/customer/store/details/" + storeId);
 
   }
 
