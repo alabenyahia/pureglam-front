@@ -7,7 +7,7 @@ import {NgxColorsModule} from "ngx-colors";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CustomerService} from "../../services/customer.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-customer-update-store',
@@ -38,6 +38,7 @@ export class CustomerUpdateStoreComponent {
   constructor(private fb: FormBuilder,
               private customerService: CustomerService,
               private snackBar: MatSnackBar,
+              private router: Router,
               private activatedRoute: ActivatedRoute,
               private cdr: ChangeDetectorRef) {
   }
@@ -87,6 +88,27 @@ export class CustomerUpdateStoreComponent {
     };
     reader.readAsDataURL(file);
     console.log("galry", this.photoGallery);
+  }
+
+  updateStore() {
+    const formData = new FormData();
+
+    formData.append("name", this.updateStoreForm.get("name")!.value);
+    formData.append("brandColor", this.updateStoreForm.get("brandColor")!.value);
+
+
+    this.customerService.updateCustomerStore(this.storeId, formData).subscribe((res: any) => {
+      this.snackBar.open("Store updated successfully!", 'Close',
+        {duration: 2500, panelClass: ['.success-snackbar']});
+      this.router.navigateByUrl("/customer/stores")
+
+      //TODO: add update store photo gallery functionality later!
+      //TODO: remove selected image from input select after adding a store!
+    }, (err: any) => {
+      this.snackBar.open("Error happened while updating store", 'Close',
+        {duration: 2500, panelClass: ['.error-snackbar']});
+    })
+
   }
 
 }

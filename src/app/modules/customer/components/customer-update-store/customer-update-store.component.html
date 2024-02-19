@@ -1,5 +1,5 @@
 <div class="update-store-container">
-  <form class="update-store-form" [formGroup]="updateStoreForm" >
+  <form class="update-store-form" [formGroup]="updateStoreForm" (ngSubmit)="updateStore()">
     <h2>Update store</h2>
 
     <mat-form-field>
