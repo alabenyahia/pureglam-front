@@ -1,0 +1,25 @@
+.update-store-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: .8rem;
+}
+
+.update-store-form h2 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.photo-select-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.photo-select {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

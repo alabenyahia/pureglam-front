@@ -1,0 +1,46 @@
+<div class="update-store-container">
+  <form class="update-store-form" [formGroup]="updateStoreForm" >
+    <h2>Update store</h2>
+
+    <mat-form-field>
+      <mat-label>Enter store name</mat-label>
+      <input matInput placeholder="Ex. PureGlam store" formControlName="name">
+      @if (updateStoreForm.get('name')?.invalid) {
+        <mat-error>Store name is required</mat-error>
+      }
+    </mat-form-field>
+
+
+    <div style="display:flex; margin-bottom: 24px; align-items: center">
+      <ngx-colors format="rgba" ngx-colors-trigger style="display: inline-block; margin:5px;"
+                  formControlName="brandColor" ></ngx-colors>
+      <span style="margin-left:10px;line-height: 33px;">
+        Select store's brand color
+    </span>
+    </div>
+
+    <!-- TODO: ADD UPDATE OR REMOVE photo functionality from store photo gallery later!!
+
+    @for (photoSelect of photoGallery; track photoSelect.id) {
+      <div class="photo-select-container">
+        <div class="photo-select">
+          @if(photoSelect.selectedFile) {
+            <img [src]="photoSelect.preview" alt="store selected photo" width="64" height="64" style="object-fit: cover; border-radius: 10px"/>
+          }
+          <mat-label>Select Photo</mat-label>
+          <input accept="image/x-png,image/gif,image/jpeg" type="file" (change)="onSelectPhoto($event, photoSelect.id)">
+        </div>
+
+        <div class="photo-select-add-btn">
+          <button (click)="addOrDeleteAnotherPhoto(photoSelect.id)" type="button" mat-fab color="accent" aria-label="Add another photo">
+            <mat-icon>{{photoSelect.id === 1 ? 'add' : 'remove'}}</mat-icon>
+          </button>
+        </div>
+      </div>
+    }-->
+
+    <button [disabled]="updateStoreForm.invalid" mat-fab extended color="accent" type="submit">Update store</button>
+
+  </form>
+
+</div>
