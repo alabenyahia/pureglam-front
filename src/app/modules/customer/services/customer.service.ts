@@ -41,6 +41,37 @@ export class CustomerService {
     });
   }
 
+  getServicesByStoreId(storeId: number) {
+    return this.http.get(BASIC_URL + "/api/customer/store/service/all/bystore/" + storeId, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  getCustomerStoreServiceById(storeServiceId: number) {
+    return this.http.get(BASIC_URL + "/api/customer/store/service/" + storeServiceId, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  addCustomerStoreService(customerStoreServiceDto: any) {
+    return this.http.post(BASIC_URL + "/api/customer/store/service/add", customerStoreServiceDto, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+
+  deleteCustomerStoreService(storeServiceId: number) {
+    return this.http.delete(BASIC_URL + "/api/customer/store/service/" + storeServiceId, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  updateCustomerStoreService(storeId: number, customerStoreServiceDto: any) {
+    return this.http.put(BASIC_URL + "/api/customer/store/service/" + storeId, customerStoreServiceDto, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
 
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();

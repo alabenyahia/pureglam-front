@@ -5,12 +5,16 @@ import {CustomerStoresComponent} from "./components/customer-stores/customer-sto
 import {CustomerAddStoreComponent} from "./components/customer-add-store/customer-add-store.component";
 import {CustomerUpdateStoreComponent} from "./components/customer-update-store/customer-update-store.component";
 import {CustomerStoreDetailsComponent} from "./components/customer-store-details/customer-store-details.component";
+import {
+  CustomerAddStoreServiceComponent
+} from "./components/customer-add-store-service/customer-add-store-service.component";
 
 const routes: Routes = [
   {path: "dashboard", component: CustomerDashboardComponent},
   {path: "stores", component: CustomerStoresComponent},
   {path: "store/add", component: CustomerAddStoreComponent},
   {path: "store/update/:id", component: CustomerUpdateStoreComponent},
+  {path: "store/:storeid/service/add", component: CustomerAddStoreServiceComponent, pathMatch: "full"},
   {path: "store/details/:id", component: CustomerStoreDetailsComponent},
 ];
 
