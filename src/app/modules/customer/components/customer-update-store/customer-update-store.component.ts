@@ -78,14 +78,14 @@ export class CustomerUpdateStoreComponent {
 
     this.customerService.updateCustomerStore(this.storeId, formData).subscribe((res: any) => {
       this.snackBar.open("Store updated successfully!", 'Close',
-        {duration: 2500, panelClass: ['.success-snackbar']});
+        {duration: 2500, panelClass: ['success-snackbar']});
       this.router.navigateByUrl("/customer/stores");
 
       //TODO: add update store photo gallery functionality later!
       //TODO: remove selected image from input select after adding a store!
     }, (err: any) => {
       this.snackBar.open("Error happened while updating store", 'Close',
-        {duration: 2500, panelClass: ['.error-snackbar']});
+        {duration: 2500, panelClass: ['error-snackbar']});
     })
 
   }

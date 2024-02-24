@@ -34,4 +34,10 @@ export class AddPhotoGalleryComponent {
     reader.readAsDataURL(file);
     console.log("galry", this.photoGallery);
   }
+
+  deleteAllUnselectedFields() {
+    this.photoGallery = this.photoGallery.filter((photo: any) => {
+      return 'selectedFile' in photo && photo.selectedFile !== null;
+    })
+  }
 }

@@ -10,6 +10,23 @@
       }
     </mat-form-field>
 
+    <mat-form-field>
+      <mat-label>Enter store service description</mat-label>
+      <textarea maxlength="256" matInput placeholder="Please write a description for this service" formControlName="description"></textarea>
+      <mat-hint align="end">{{addStoreServiceForm.get('description')?.value === null ? '0' : addStoreServiceForm.get('description')!.value.length }} / 256</mat-hint>
+      @if (addStoreServiceForm.get('description')?.invalid) {
+        <mat-error>Store service description is invalid</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter store service price in TND</mat-label>
+      <input matInput min="0" type="number" placeholder="Ex. 45TND" formControlName="price">
+      @if (addStoreServiceForm.get('price')?.invalid) {
+        <mat-error>Store service price is invalid</mat-error>
+      }
+    </mat-form-field>
+
     <app-add-photo-gallery/>
 
     <button [disabled]="addStoreServiceForm.invalid" mat-fab extended color="accent" type="submit">Add store</button>

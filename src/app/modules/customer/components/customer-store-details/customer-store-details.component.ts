@@ -64,12 +64,12 @@ export class CustomerStoreDetailsComponent {
         if (confirmed) {
           this.customerService.deleteCustomerStore(storeId).subscribe((res: any) => {
             this.snackBar.open("Store deleted successfully!", 'Close',
-              {duration: 2500, panelClass: ['.success-snackbar']});
+              {duration: 2500, panelClass: ['success-snackbar']});
 
             this.router.navigateByUrl("/customer/stores");
           }, (err: any) => {
             this.snackBar.open("Error happened while deleting store", 'Close',
-              {duration: 2500, panelClass: ['.error-snackbar']});
+              {duration: 2500, panelClass: ['error-snackbar']});
           });
         }
       });
