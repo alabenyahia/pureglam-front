@@ -28,12 +28,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class CustomerUpdateStoreComponent {
   updateStoreForm!: FormGroup;
   brandColor: any;
-  photoGallery: any = [{id: 1}];
   storeId: number = this.activatedRoute.snapshot.params["id"];
   store: any = null;
 
-  selectedFile: any;
-  imagePreview: any;
 
   constructor(private fb: FormBuilder,
               private customerService: CustomerService,
@@ -70,24 +67,6 @@ export class CustomerUpdateStoreComponent {
     });
 
     this.getStoreById();
-  }
-
-  addOrDeleteAnotherPhoto(id: number) {
-    if (id === 1) {
-      this.photoGallery.push({id: this.photoGallery.length + 1});
-    } else {
-      this.photoGallery.pop();
-    }
-  }
-
-  onSelectPhoto(event: any, id: number) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.photoGallery[id - 1] = {...this.photoGallery[id -1], preview: reader.result, selectedFile: file };
-    };
-    reader.readAsDataURL(file);
-    console.log("galry", this.photoGallery);
   }
 
   updateStore() {

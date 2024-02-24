@@ -19,25 +19,7 @@
     </span>
     </div>
 
-    <!-- TODO: ADD UPDATE OR REMOVE photo functionality from store photo gallery later!!
-
-    @for (photoSelect of photoGallery; track photoSelect.id) {
-      <div class="photo-select-container">
-        <div class="photo-select">
-          @if(photoSelect.selectedFile) {
-            <img [src]="photoSelect.preview" alt="store selected photo" width="64" height="64" style="object-fit: cover; border-radius: 10px"/>
-          }
-          <mat-label>Select Photo</mat-label>
-          <input accept="image/x-png,image/gif,image/jpeg" type="file" (change)="onSelectPhoto($event, photoSelect.id)">
-        </div>
-
-        <div class="photo-select-add-btn">
-          <button (click)="addOrDeleteAnotherPhoto(photoSelect.id)" type="button" mat-fab color="accent" aria-label="Add another photo">
-            <mat-icon>{{photoSelect.id === 1 ? 'add' : 'remove'}}</mat-icon>
-          </button>
-        </div>
-      </div>
-    }-->
+    <!-- TODO: ADD UPDATE OR REMOVE photo functionality from store photo gallery later!! -->
 
     <button [disabled]="updateStoreForm.invalid" mat-fab extended color="accent" type="submit">Update store</button>
 

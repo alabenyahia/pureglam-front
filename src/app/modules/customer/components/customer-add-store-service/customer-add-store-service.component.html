@@ -1,1 +1,17 @@
-<p>customer-add-store-service works!</p>
+<div class="add-store-service-container">
+  <form class="add-store-service-form" [formGroup]="addStoreServiceForm" (ngSubmit)="addStoreService()">
+    <h2>Add store service</h2>
+
+    <mat-form-field>
+      <mat-label>Enter store service name</mat-label>
+      <input matInput placeholder="Ex. Haircut" formControlName="name">
+      @if (addStoreServiceForm.get('name')?.invalid) {
+        <mat-error>Store service name is required</mat-error>
+      }
+    </mat-form-field>
+
+    <app-add-photo-gallery/>
+
+    <button [disabled]="addStoreServiceForm.invalid" mat-fab extended color="accent" type="submit">Add store</button>
+  </form>
+</div>

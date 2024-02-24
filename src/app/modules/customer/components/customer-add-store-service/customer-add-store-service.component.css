@@ -1,0 +1,14 @@
+.add-store-service-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: .8rem;
+}
+
+.add-store-service-form h2 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+
