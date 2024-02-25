@@ -1,48 +1,101 @@
+<div class="store-detail-container">
+  <div class="add-service-container">
+    <h2>{{ store.name }}</h2>
+    <button mat-raised-button color="accent" routerLink="/customer/store/{{store.id}}/service/add"
+            routerLinkActive="active">Add service
+    </button>
+  </div>
 
-  <div class="store-detail-container">
-    <div class="add-service-container">
-      <h2>{{store.name}}</h2>
-      <button mat-raised-button color="accent" routerLink="/customer/store/{{store.id}}/service/add" routerLinkActive="active">Add service</button>
-    </div>
-
-    <div class="store-card-container">
+  <div class="store-card-container">
 
 
-      @if (store.photos !== null && store.photos.length > 0) {
-        <div class="photo-carousel">
+    @if (store.photos !== null && store.photos.length > 0) {
+      <div class="photo-carousel">
 
-          <swiper-container class="mySwiper" loop="true" navigation="true" speed="700" effect="fade">
-            @for (photo of store.photos; track photo.id) {
-              <swiper-slide>
-                <img [src]="photo.processedPhoto" alt="Store photo" width="100%" height="350"
-                     style="object-fit: cover;">
-              </swiper-slide>
+        <swiper-container class="mySwiper" loop="true" navigation="true" speed="700" effect="fade">
+          @for (photo of store.photos; track photo.id) {
+            <swiper-slide>
+              <img [src]="photo.processedPhoto" alt="Store photo" width="100%" height="350"
+                   style="object-fit: cover;">
+            </swiper-slide>
+          }
+        </swiper-container>
+
+      </div>
+    } @else {
+      <img src="assets/imgs/no-store-image.jpg" alt="No Store photo yet" width="100%" height="350"
+           style="object-fit: cover;">
+    }
+
+    <mat-card class="store-card">
+      <div class="store-btns">
+        <button routerLink="/customer/store/update/{{store.id}}" mat-mini-fab aria-label="Update store button">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab (click)="deleteStore(store.id)" aria-label="Delete store button">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+
+      <mat-card-header style="margin-bottom: 1rem; width: 100%">
+        <mat-card-title>{{ store.name }}</mat-card-title>
+        <mat-card-subtitle>Store description</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+
+    <h3>Store services</h3>
+    <div class="services-container">
+
+      @if (store.services) {
+        @for (storeService of store.services; track storeService.id) {
+          <div class="service-container">
+
+
+            @if (storeService.photos !== null && storeService.photos.length > 0) {
+              <div class="photo-carousel">
+
+                <swiper-container class="mySwiper" loop="true" navigation="true" speed="700" effect="fade">
+                  @for (servicePhoto of storeService.photos; track servicePhoto.id) {
+                    <swiper-slide>
+                      <img [src]="servicePhoto.processedPhoto" alt="Store service photo" width="100%" height="350"
+                           style="object-fit: cover;">
+                    </swiper-slide>
+                  }
+                </swiper-container>
+
+              </div>
+            } @else {
+              <img src="assets/imgs/no-store-image.jpg" alt="No Store photo yet" width="100%" height="350"
+                   style="object-fit: cover;">
             }
-          </swiper-container>
 
-        </div>
+            <mat-card class="service-card">
+              <div class="service-btns">
+                <button routerLink="/customer/store/service/update/{{storeService.id}}" mat-mini-fab
+                        aria-label="Update store service button">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab (click)="deleteStoreService(storeService.id)"
+                        aria-label="Delete store service button">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+
+
+              <mat-card-header style="margin-bottom: 1rem; width: 100%">
+                <mat-card-title>{{ storeService.name }} | {{ storeService.price }}TND</mat-card-title>
+                <mat-card-subtitle>{{ storeService.description }}</mat-card-subtitle>
+              </mat-card-header>
+            </mat-card>
+          </div>
+        }
       } @else {
-        <img src="assets/imgs/no-store-image.jpg" alt="No Store photo yet" width="100%" height="350"
-             style="object-fit: cover;">
+        <div>No services in the store yet...</div>
       }
 
-        <mat-card class="store-card" >
-          <div class="store-btns">
-            <button routerLink="/customer/store/update/{{store.id}}" mat-mini-fab aria-label="Update store button">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-mini-fab (click)="deleteStore(store.id)" aria-label="Delete store button">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
-
-
-          <mat-card-header style="margin-bottom: 1rem; width: 100%">
-            <mat-card-title>{{ store.name }}</mat-card-title>
-            <mat-card-subtitle>Store description</mat-card-subtitle>
-          </mat-card-header>
-        </mat-card>
-
     </div>
+
   </div>
+</div>
 

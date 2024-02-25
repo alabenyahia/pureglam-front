@@ -7,21 +7,24 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {CustomerService} from "../../services/customer.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {DialogsService} from "../../../../shared/dialogs/services/dialogs.service";
+import {JsonPipe, NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-customer-store-details',
   standalone: true,
-    imports: [
-        MatButton,
-        MatCard,
-        MatCardHeader,
-        MatCardSubtitle,
-        MatCardTitle,
-        MatIcon,
-        MatMiniFabButton,
-        RouterLink,
-        RouterLinkActive
-    ],
+  imports: [
+    MatButton,
+    MatCard,
+    MatCardHeader,
+    MatCardSubtitle,
+    MatCardTitle,
+    MatIcon,
+    MatMiniFabButton,
+    RouterLink,
+    RouterLinkActive,
+    NgForOf,
+    JsonPipe
+  ],
   templateUrl: './customer-store-details.component.html',
   styleUrl: './customer-store-details.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -44,6 +47,16 @@ export class CustomerStoreDetailsComponent {
       if (res.photos) {
         res.photos.forEach((photo: any) => {
           photo.processedPhoto = 'data:image/jpeg;base64,' + photo.returnedPhoto;
+        });
+      }
+
+      if (res.services) {
+        res.services.forEach((service: any) => {
+          if (service.photos && service.photos.length > 0) {
+            service.photos.forEach((photo: any) => {
+              photo.processedPhoto = 'data:image/jpeg;base64,' + photo.returnedPhoto;
+            })
+          }
         });
       }
       this.store = res;
@@ -75,5 +88,7 @@ export class CustomerStoreDetailsComponent {
       });
 
   }
+
+  deleteStoreService(storeServiceId: number) {}
 
 }
