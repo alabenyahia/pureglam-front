@@ -89,6 +89,21 @@ export class CustomerStoreDetailsComponent {
 
   }
 
-  deleteStoreService(storeServiceId: number) {}
+  deleteStoreService(storeServiceId: number) {
+    this.dialogsService.openDeleteConfirmationDialog('Are you sure you want to delete this store service?')
+      .subscribe(confirmed => {
+        if (confirmed) {
+          this.customerService.deleteCustomerStoreService(storeServiceId).subscribe((res: any) => {
+            this.snackBar.open("Store service deleted successfully!", 'Close',
+              {duration: 2500, panelClass: ['success-snackbar']});
+
+            this.router.navigateByUrl("/customer/stores");
+          }, (err: any) => {
+            this.snackBar.open("Error happened while deleting store service", 'Close',
+              {duration: 2500, panelClass: ['error-snackbar']});
+          });
+        }
+      });
+  }
 
 }

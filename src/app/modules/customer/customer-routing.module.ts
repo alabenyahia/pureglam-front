@@ -8,12 +8,16 @@ import {CustomerStoreDetailsComponent} from "./components/customer-store-details
 import {
   CustomerAddStoreServiceComponent
 } from "./components/customer-add-store-service/customer-add-store-service.component";
+import {
+  CustomerUpdateStoreServiceComponent
+} from "./components/customer-update-store-service/customer-update-store-service.component";
 
 const routes: Routes = [
   {path: "dashboard", component: CustomerDashboardComponent},
   {path: "stores", component: CustomerStoresComponent},
   {path: "store/add", component: CustomerAddStoreComponent},
   {path: "store/update/:id", component: CustomerUpdateStoreComponent},
+  {path: "store/service/update/:id", component: CustomerUpdateStoreServiceComponent, pathMatch: "full"},
   {path: "store/:storeid/service/add", component: CustomerAddStoreServiceComponent, pathMatch: "full"},
   {path: "store/details/:id", component: CustomerStoreDetailsComponent},
 ];

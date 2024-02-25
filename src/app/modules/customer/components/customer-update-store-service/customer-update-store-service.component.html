@@ -1,0 +1,36 @@
+<div class="update-store-service-container">
+  <form class="update-store-service-form" [formGroup]="updateStoreServiceForm" (ngSubmit)="updateStoreService()">
+    <h2>Update store service</h2>
+
+    <mat-form-field>
+      <mat-label>Enter store service name</mat-label>
+      <input matInput placeholder="Ex. Haircut" formControlName="name">
+      @if (updateStoreServiceForm.get('name')?.invalid) {
+        <mat-error>Store service name is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter store service description</mat-label>
+      <textarea maxlength="256" matInput placeholder="Please write a description for this service" formControlName="description"></textarea>
+      <mat-hint align="end">{{updateStoreServiceForm.get('description')?.value === null ? '0' : updateStoreServiceForm.get('description')!.value.length }} / 256</mat-hint>
+      @if (updateStoreServiceForm.get('description')?.invalid) {
+        <mat-error>Store service description is invalid</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter store service price in TND</mat-label>
+      <input matInput min="0" type="number" placeholder="Ex. 45TND" formControlName="price">
+      @if (updateStoreServiceForm.get('price')?.invalid) {
+        <mat-error>Store service price is invalid</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- TODO: ADD UPDATE OR REMOVE photo functionality from store photo gallery later!! -->
+
+    <button [disabled]="updateStoreServiceForm.invalid" mat-fab extended color="accent" type="submit">Update store service</button>
+
+  </form>
+
+</div>
